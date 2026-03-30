@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://textcounter.online/sitemap.xml
