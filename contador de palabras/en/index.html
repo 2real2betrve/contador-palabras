@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online word and character counter. Count words, characters, sentences and paragraphs instantly. Perfect for essays, social media and SEO.">
+    <meta name="keywords" content="word counter, character counter, count words online, letter counter, word count tool free">
+    <title>Free Online Word & Character Counter | SEO Tool</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <h1>📝 Word & Character Counter</h1>
+        <p>Free tool to count words, characters, sentences and more</p>
+        <a href="../index.html" class="lang-switch">🇪🇸 Español</a>
+    </header>
+
+    <!-- ADSENSE TOP -->
+    <div class="ad-container">
+        <div class="ad-placeholder">
+            <p>📢 Advertisement</p>
+        </div>
+    </div>
+
+    <main>
+        <div class="counter-container">
+            <textarea id="texto" placeholder="Type or paste your text here to start counting..."></textarea>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" id="palabras">0</span>
+                    <span class="stat-label">Words</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="caracteres">0</span>
+                    <span class="stat-label">Characters</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="caracteres-sin-espacios">0</span>
+                    <span class="stat-label">No spaces</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="oraciones">0</span>
+                    <span class="stat-label">Sentences</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="parrafos">0</span>
+                    <span class="stat-label">Paragraphs</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="tiempo-lectura">0</span>
+                    <span class="stat-label">Min. read</span>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button onclick="copiarTexto()" class="btn btn-primary">📋 Copy text</button>
+                <button onclick="limpiarTexto()" class="btn btn-secondary">🗑️ Clear</button>
+                <button onclick="descargarTexto()" class="btn btn-secondary">💾 Download</button>
+            </div>
+        </div>
+
+        <!-- ADSENSE MIDDLE -->
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <p>📢 Advertisement</p>
+            </div>
+        </div>
+
+        <section class="limits-section">
+            <h2>📱 Social Media Character Limits</h2>
+            <div class="limits-grid">
+                <div class="limit-card">
+                    <span class="platform">Twitter/X</span>
+                    <span class="limit">280 characters</span>
+                    <div class="progress-bar"><div class="progress" id="progress-twitter"></div></div>
+                </div>
+                <div class="limit-card">
+                    <span class="platform">Instagram Bio</span>
+                    <span class="limit">150 characters</span>
+                    <div class="progress-bar"><div class="progress" id="progress-instagram"></div></div>
+                </div>
+                <div class="limit-card">
+                    <span class="platform">TikTok Caption</span>
+                    <span class="limit">2,200 characters</span>
+                    <div class="progress-bar"><div class="progress" id="progress-tiktok"></div></div>
+                </div>
+                <div class="limit-card">
+                    <span class="platform">LinkedIn Post</span>
+                    <span class="limit">3,000 characters</span>
+                    <div class="progress-bar"><div class="progress" id="progress-linkedin"></div></div>
+                </div>
+                <div class="limit-card">
+                    <span class="platform">YouTube Title</span>
+                    <span class="limit">100 characters</span>
+                    <div class="progress-bar"><div class="progress" id="progress-youtube"></div></div>
+                </div>
+                <div class="limit-card">
+                    <span class="platform">SEO Meta Title</span>
+                    <span class="limit">60 characters</span>
+                    <div class="progress-bar"><div class="progress" id="progress-seo"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2>How to use the word counter?</h2>
+            <p>Simply type or paste your text in the text area above. Our counter will automatically calculate:</p>
+            <ul>
+                <li><strong>Words:</strong> Total words in your text</li>
+                <li><strong>Characters:</strong> All characters including spaces</li>
+                <li><strong>No spaces:</strong> Characters without counting spaces</li>
+                <li><strong>Sentences:</strong> Based on periods, question marks and exclamation points</li>
+                <li><strong>Paragraphs:</strong> Text blocks separated by blank lines</li>
+                <li><strong>Reading time:</strong> Estimated at 200 words per minute</li>
+            </ul>
+            
+            <h2>Why count words?</h2>
+            <p>The word counter is useful for:</p>
+            <ul>
+                <li>✅ Writing essays and academic papers with word limits</li>
+                <li>✅ Optimizing social media posts</li>
+                <li>✅ Creating perfect SEO meta descriptions</li>
+                <li>✅ Checking article and blog length</li>
+                <li>✅ Preparing speeches with estimated time</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- ADSENSE BOTTOM -->
+    <div class="ad-container">
+        <div class="ad-placeholder">
+            <p>📢 Advertisement</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Word Counter Online | 100% Free Tool</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
