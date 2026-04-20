@@ -8,6 +8,10 @@ const caracteresSinEspaciosEl = document.getElementById('caracteres-sin-espacios
 const oracionesEl = document.getElementById('oraciones');
 const parrafosEl = document.getElementById('parrafos');
 const tiempoLecturaEl = document.getElementById('tiempo-lectura');
+const tiempoHablaEl = document.getElementById('tiempo-habla');
+const promedioPalabraEl = document.getElementById('promedio-palabra');
+const palabraTopEl = document.getElementById('palabra-top');
+const metaStatusEl = document.getElementById('meta-status');
 
 // Progress bars for social media
 const limits = {
@@ -29,6 +33,7 @@ function contarTodo() {
     const oraciones = texto.trim() === '' ? 0 : (texto.match(/[.!?]+/g) || []).length;
     const parrafos = texto.trim() === '' ? 0 : texto.split(/\n\s*\n/).filter(p => p.trim() !== '').length || (texto.trim() ? 1 : 0);
     const tiempoLectura = Math.ceil(palabras / 200);
+    const tiempoHabla = Math.ceil(palabras / 130);
     
     animarNumero(palabrasEl, palabras);
     animarNumero(caracteresEl, caracteres);
@@ -36,8 +41,49 @@ function contarTodo() {
     animarNumero(oracionesEl, oraciones);
     animarNumero(parrafosEl, parrafos);
     animarNumero(tiempoLecturaEl, tiempoLectura);
+    actualizarInsights(texto, palabras, caracteres, tiempoHabla);
     
     actualizarProgreso(caracteres);
+}
+
+function actualizarInsights(texto, palabras, caracteres, tiempoHabla) {
+    const average = palabras > 0 ? (caracteres / palabras).toFixed(1) : '0';
+    const repeated = mostRepeatedWord(texto);
+    const metaState = metaDescriptionState(caracteres);
+
+    tiempoHablaEl.textContent = `${tiempoHabla} min`;
+    promedioPalabraEl.textContent = `${average} characters`;
+    palabraTopEl.textContent = repeated;
+    metaStatusEl.textContent = metaState;
+}
+
+function mostRepeatedWord(texto) {
+    const stopwords = new Set(['the', 'and', 'for', 'you', 'that', 'with', 'this', 'from', 'are', 'was', 'have', 'your', 'not']);
+    const words = texto.toLowerCase().match(/[a-z0-9]+/g) || [];
+    const counter = {};
+
+    for (const word of words) {
+        if (word.length < 3 || stopwords.has(word)) continue;
+        counter[word] = (counter[word] || 0) + 1;
+    }
+
+    let top = '—';
+    let max = 0;
+    for (const [word, count] of Object.entries(counter)) {
+        if (count > max) {
+            top = `${word} (${count})`;
+            max = count;
+        }
+    }
+    return top;
+}
+
+function metaDescriptionState(characters) {
+    if (characters === 0) return 'Too short';
+    if (characters < 120) return 'Short';
+    if (characters <= 160) return 'Optimal';
+    if (characters <= 180) return 'Long';
+    return 'Too long';
 }
 
 function animarNumero(elemento, nuevoValor) {
@@ -105,6 +151,22 @@ function descargarTexto() {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     mostrarNotificacion('File downloaded!', 'success');
+}
+
+function compartir(network) {
+    const url = encodeURIComponent('https://textcounter.online/en/');
+    const text = encodeURIComponent('Try this free word and character counter');
+    const links = {
+        x: `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+        linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+        whatsapp: `https://wa.me/?text=${text}%20${url}`
+    };
+
+    const link = links[network];
+    if (!link) return;
+    window.open(link, '_blank', 'noopener,noreferrer');
+    mostrarNotificacion('Thanks for sharing!', 'success');
 }
 
 function mostrarNotificacion(mensaje, tipo) {

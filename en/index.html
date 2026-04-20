@@ -7,10 +7,15 @@
     <meta name="keywords" content="word counter, character counter, count words online, letter counter, word count tool free">
     <meta name="author" content="TextCounter.Online">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#667eea">
     <link rel="canonical" href="https://textcounter.online/en/">
+    <link rel="alternate" hreflang="en" href="https://textcounter.online/en/">
+    <link rel="alternate" hreflang="es" href="https://textcounter.online/">
+    <link rel="alternate" hreflang="x-default" href="https://textcounter.online/">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
     <meta property="og:url" content="https://textcounter.online/en/">
     <meta property="og:title" content="Free Online Word & Character Counter">
     <meta property="og:description" content="Free tool to count words, characters, sentences and paragraphs. Perfect for essays and social media.">
@@ -24,9 +29,32 @@
     <title>Free Online Word & Character Counter | SEO Tool</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9029981012128379"
      crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TextCounter.Online",
+      "url": "https://textcounter.online/en/",
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "UseAction",
+        "target": "https://textcounter.online/en/"
+      }
+    }
+    </script>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">TextCounter.Online</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
     <header>
         <h1>📝 Word & Character Counter</h1>
         <p>Free tool to count words, characters, sentences and more</p>
@@ -76,6 +104,39 @@
                 <button onclick="limpiarTexto()" class="btn btn-secondary">🗑️ Clear</button>
                 <button onclick="descargarTexto()" class="btn btn-secondary">💾 Download</button>
             </div>
+
+            <section class="insights-section" aria-labelledby="insights-title">
+                <h2 id="insights-title">⚡ Quick text insights</h2>
+                <div class="insights-grid">
+                    <article class="insight-card">
+                        <span class="insight-label">Speaking time</span>
+                        <span class="insight-value" id="tiempo-habla">0 min</span>
+                    </article>
+                    <article class="insight-card">
+                        <span class="insight-label">Average per word</span>
+                        <span class="insight-value" id="promedio-palabra">0 characters</span>
+                    </article>
+                    <article class="insight-card">
+                        <span class="insight-label">Most repeated word</span>
+                        <span class="insight-value" id="palabra-top">—</span>
+                    </article>
+                    <article class="insight-card">
+                        <span class="insight-label">Meta description state</span>
+                        <span class="insight-value" id="meta-status">Too short</span>
+                    </article>
+                </div>
+            </section>
+
+            <section class="share-section" aria-labelledby="share-title">
+                <h2 id="share-title">📣 Share this tool</h2>
+                <p>Help other students and creators by sharing this tool.</p>
+                <div class="share-buttons">
+                    <button class="btn btn-share" onclick="compartir('x')">Share on X</button>
+                    <button class="btn btn-share" onclick="compartir('facebook')">Share on Facebook</button>
+                    <button class="btn btn-share" onclick="compartir('linkedin')">Share on LinkedIn</button>
+                    <button class="btn btn-share" onclick="compartir('whatsapp')">Share on WhatsApp</button>
+                </div>
+            </section>
         </div>
 
         <!-- ADSENSE MIDDLE -->
@@ -122,26 +183,72 @@
         </section>
 
         <section class="info-section">
-            <h2>How to use the word counter?</h2>
-            <p>Simply type or paste your text in the text area above. Our counter will automatically calculate:</p>
-            <ul>
-                <li><strong>Words:</strong> Total words in your text</li>
-                <li><strong>Characters:</strong> All characters including spaces</li>
-                <li><strong>No spaces:</strong> Characters without counting spaces</li>
-                <li><strong>Sentences:</strong> Based on periods, question marks and exclamation points</li>
-                <li><strong>Paragraphs:</strong> Text blocks separated by blank lines</li>
-                <li><strong>Reading time:</strong> Estimated at 200 words per minute</li>
-            </ul>
-            
-            <h2>Why count words?</h2>
-            <p>The word counter is useful for:</p>
-            <ul>
-                <li>✅ Writing essays and academic papers with word limits</li>
-                <li>✅ Optimizing social media posts</li>
-                <li>✅ Creating perfect SEO meta descriptions</li>
-                <li>✅ Checking article and blog length</li>
-                <li>✅ Preparing speeches with estimated time</li>
-            </ul>
+            <article>
+                <h2>Comprehensive Guide: Why is it important to count words and characters?</h2>
+                <p>In the digital age, content length is a crucial factor for both Search Engine Optimization (SEO), social media impact, and academic writing. Our <strong>online word and character counter</strong> is not just a simple text calculator; it is an optimization tool designed to help you meet the strict length requirements of the most popular platforms and educational institutions.</p>
+                <p>Whether you are writing a college essay, optimizing your website's <em>meta description</em>, or trying to fit a perfect message into a tweet, having exact control over the number of words and letters will prevent unexpected text truncation and improve the readability of your content.</p>
+
+                <h3>How does our Online Word Counter work?</h3>
+                <p>Our platform uses client-side text processing algorithms (right in your browser) to provide you with real-time results. As you type or paste your text into the top area, the tool instantly calculates:</p>
+                <ul>
+                    <li><strong>Word Count:</strong> Identifies the total number of words separated by spaces, ideal for meeting writing quotas.</li>
+                    <li><strong>Character Count (with and without spaces):</strong> Essential for platforms with strict limits like Twitter (280 characters) or SEO titles (typically 60 characters).</li>
+                    <li><strong>Reading and Speaking Metrics:</strong> We calculate the estimated reading time based on an average of 200 to 250 words per minute, which is critical for structuring podcast scripts, professional speeches, or YouTube videos.</li>
+                    <li><strong>Paragraph and Sentence Analysis:</strong> Helps you maintain a digestible reading structure, avoiding overly dense text blocks that might drive your readers away.</li>
+                </ul>
+                
+                <h3>The importance of text length in SEO (Search Engine Optimization)</h3>
+                <p>If you are a content creator, blogger, or digital marketer, you know that Google and other search engines prioritize content that thoroughly resolves the user's search intent. While there is no official "magic number" of words to rank in the top spot, SEO industry studies show a strong correlation between long-form content (generally between 1,500 and 2,500 words) and better search engine rankings.</p>
+                <p>Furthermore, critical elements like <strong>Meta Titles</strong> and <strong>Meta Descriptions</strong> have pixel limits that translate into character limits. A title over 60 characters risks being truncated with an ellipsis (...) in search results, lowering your Click-Through Rate (CTR). Our tool features specific metric progress bars to visually help you stay within these limits.</p>
+                
+                <h3>Updated Character Limits for Social Media</h3>
+                <p>Each social platform has its own rules. Exceeding the character limit means your message won't be published or will be cut off, losing the impact of your Call to Action. Here is a quick reference that our tool monitors for you:</p>
+                <ul>
+                    <li><strong>Twitter (X):</strong> 280 characters per tweet (unless you use Twitter Premium).</li>
+                    <li><strong>Instagram:</strong> The caption limit is 2,200 characters, but only the first 125 are visible in the feed without having to tap "See more". The bio is limited to 150 characters.</li>
+                    <li><strong>LinkedIn:</strong> Personal posts support up to 3,000 characters, allowing for high-value professional micro-blogging.</li>
+                    <li><strong>TikTok:</strong> Currently allows up to 2,200 characters in video descriptions, giving you room to add SEO context and hashtags to your vertical content.</li>
+                    <li><strong>YouTube:</strong> Titles have a strict limit of 100 characters, but experts recommend keeping it at 70 for full visibility on mobile devices.</li>
+                </ul>
+
+                <h3>Word Requirements in Academic Writing</h3>
+                <p>For students, researchers, and authors, meeting the exact word count is not optional; it's a grading rule. Admission essays, university theses, and journalistic articles require precision. If your professor requests a 2,000-word essay, submitting 1,500 will show a lack of effort, while submitting 3,000 might penalize you for a lack of synthesis. Using a constant word counter while writing is the best practice to avoid having to delete or omit valuable information at the last minute.</p>
+                
+                <h3>The Impact of Text Length on Email Marketing and Copywriting</h3>
+                <p>In the digital marketing and sales world, every word matters. Persuasive writing, or "Copywriting," leans heavily on text length. For instance, industry studies reveal that email subject lines containing between 40 and 50 characters (approximately 7 to 9 words) have the highest open rates. If you exceed this length, standard mobile email clients like Gmail or Outlook will truncate your message.</p>
+                <p>Furthermore, when writing ads for Facebook Ads or Google Ads, character limits are unforgiving and ad space is premium. Using our length checker allows you to polish your headlines and descriptions to ensure they fit perfectly into ad banners without losing the main "Call to Action" (CTA).</p>
+
+                <h3>Relationship Between Word Count, Reading Time, and User Retention (UX)</h3>
+                <p>Have you ever landed on a webpage and immediately left after seeing an endless "wall of text"? In web design, this is known as reader friction or fatigue. Knowing the paragraph and sentence count of your text helps you improve the User Experience (UX).</p>
+                <p>Standard readability metrics suggest that sentences should ideally not exceed 20 to 25 words, and paragraphs should have no more than 3 to 4 sentences. Additionally, our tool calculates "Estimated Reading Time" and "Estimated Speaking Time." Informing a user that an article will take "4 minutes to read" psychologically helps retain them, as they are more willing to commit to a pre-defined, short reading session.</p>
+
+                <h3>Why Do Spaces Count as Characters on Social Media?</h3>
+                <p>A common point of confusion among users is the difference between "characters" and "characters without spaces." In computer science and encoding, a blank space isn't "nothing"—it is an encoded character (such as ASCII 32) that takes up storage bytes in the databases of platforms like Twitter, Facebook, or Instagram.</p>
+                <p>Because of this, when platforms like X (Twitter) impose a 280-character limit, they are counting absolutely every keystroke, including spaces, line breaks, and punctuation marks. Without an exact text counter tool, it's nearly impossible to predict if your perfectly crafted sentence will fit into the comment box.</p>
+
+                <h2>❓ Frequently Asked Questions (FAQ)</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h3>Is the word counter free?</h3>
+                        <p>Yes, our tool is 100% free for all users. You do not need to register, download any software, or pay for a subscription. You can use the service unlimitedly, 24 hours a day.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Is it secure? Is my text saved on any server?</h3>
+                        <p>Your privacy is our absolute priority. All the logic for word counting and character analysis runs locally via JavaScript in your own browser. No snippet of the text you paste is ever sent to, saved in, or stored on our servers or external databases.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Does it work offline?</h3>
+                        <p>Yes. Once you have loaded the tool's initial page, you can disconnect from the internet and the text counter will continue to work perfectly, as it does not require making calls to a backend server to perform the calculations.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What is the difference between counting with spaces and without spaces?</h3>
+                        <p>The "character count with spaces" counts absolutely every keystroke (including the space bar), and is the core metric used by social networks like Twitter or Instagram. The "count without spaces" only adds up letters, numbers, and punctuation marks, being useful for certain transcription, translation, or programming tasks.</p>
+                    </div>
+                </div>
+
+                <h2>✅ Quality and Transparency Commitment</h2>
+                <p>At TextCounter.Online we strive to offer a lightweight, fast, and accurate web utility. Unlike other platforms, we do not interrupt your workflow with invasive pop-ups or forced registrations. We keep our tool funded through non-intrusive advertising spaces, ensuring that the core user experience —counting words and optimizing texts— is always the main focus of your screen.</p>
+            </article>
         </section>
     </main>
 
@@ -153,9 +260,10 @@
     </div>
 
     <footer>
-        <p>© 2024 TextCounter.Online | <a href="privacy.html" style="color: rgba(255,255,255,0.8);">Privacy Policy</a> | <a href="about.html" style="color: rgba(255,255,255,0.8);">About</a> | <a href="contact.html" style="color: rgba(255,255,255,0.8);">Contact</a></p>
+        <p>© 2024 TextCounter.Online | <a href="privacy.html" style="color: rgba(255,255,255,0.8);">Privacy Policy</a> | <a href="about.html" style="color: rgba(255,255,255,0.8);">About</a> | <a href="contact.html" style="color: rgba(255,255,255,0.8);">Contact</a> | <a href="terms.html" style="color: rgba(255,255,255,0.8);">Terms</a></p>
     </footer>
 
     <script src="script.js"></script>
+    <script src="cookie-consent.js"></script>
 </body>
 </html>
