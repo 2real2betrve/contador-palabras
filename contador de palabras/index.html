@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Palabras y Caracteres | El Más Completo y Rápido</title>
+    <meta name="description" content="Cuenta palabras, caracteres, calcula el tiempo de lectura, analiza la densidad SEO y mejora tu escritura con la herramienta más avanzada y rápida.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9029981012128379" crossorigin="anonymous"></script>
+
+    <!-- Schema.org FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Cómo se cuentan las palabras exactamente?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nuestro algoritmo detecta los espacios en blanco, saltos de línea y signos de puntuación para separar y contar las palabras con una precisión del 100%, adaptado a las reglas del idioma español."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿El contador funciona en español con tildes y ñ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, está optimizado para reconocer tildes, diéresis, la letra ñ y otros caracteres especiales del español, contando las palabras correctamente sin dividirlas."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿El texto que escribo se guarda?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, todo el procesamiento se realiza localmente en tu navegador. Ningún texto se envía a nuestros servidores, garantizando total privacidad y seguridad."
+        }
+      }]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+                <span>WordCount Pro</span>
+            </div>
+            <nav class="main-nav">
+                <a href="#herramientas">Herramientas</a>
+                <a href="#analisis">Análisis SEO</a>
+                <a href="#limites">Límites</a>
+                <a href="#faq">FAQ</a>
+                <a href="en/index.html" class="lang-switch" style="margin-left:1rem; border-left:1px solid #333; padding-left:1rem; text-decoration:none;">🇺🇸 English</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Top Ad Slot (Mobile mainly) -->
+        <div class="ad-slot ad-slot-top" id="ad-slot-1">
+            <span>Publicidad</span>
+            <!-- Inserta el código de AdSense aquí -->
+        </div>
+
+        <!-- Panel de Estadísticas en Tiempo Real -->
+        <section class="stats-dashboard">
+            <div class="stats-grid">
+                <!-- Fila 1: Principales -->
+                <div class="stat-card primary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5a2.5 2.5 0 0 0-0 5H20"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Palabras</span>
+                        <span class="stat-value" id="stat-words">0</span>
+                    </div>
+                </div>
+                <div class="stat-card primary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Caracteres</span>
+                        <span class="stat-value" id="stat-chars">0</span>
+                    </div>
+                </div>
+                <div class="stat-card primary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 9V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3m18 6v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3m4-6h8"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Chars (Sin Esp.)</span>
+                        <span class="stat-value" id="stat-chars-no-spaces">0</span>
+                    </div>
+                </div>
+                <div class="stat-card primary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="3" y2="18"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Oraciones</span>
+                        <span class="stat-value" id="stat-sentences">0</span>
+                    </div>
+                </div>
+                
+                <!-- Fila 2: Avanzadas -->
+                <div class="stat-card secondary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Párrafos</span>
+                        <span class="stat-value" id="stat-paragraphs">0</span>
+                    </div>
+                </div>
+                <div class="stat-card secondary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Líneas</span>
+                        <span class="stat-value" id="stat-lines">0</span>
+                    </div>
+                </div>
+                <div class="stat-card secondary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Páginas</span>
+                        <span class="stat-value" id="stat-pages">0.0</span>
+                    </div>
+                </div>
+                <div class="stat-card secondary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Tiempo Lectura</span>
+                        <span class="stat-value" id="stat-read-time">00:00</span>
+                    </div>
+                </div>
+
+                <!-- Fila 3: SEO & Densidad -->
+                <div class="stat-card tertiary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Palabras Únicas</span>
+                        <span class="stat-value" id="stat-unique-words">0</span>
+                    </div>
+                </div>
+                <div class="stat-card tertiary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Densidad Únicas</span>
+                        <span class="stat-value" id="stat-unique-density">0%</span>
+                    </div>
+                </div>
+                <div class="stat-card tertiary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Top 3 Palabras</span>
+                        <span class="stat-value text-value" id="stat-top-word">-</span>
+                    </div>
+                </div>
+                <div class="stat-card tertiary fade-in-section">
+                    <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Tiempo Habla</span>
+                        <span class="stat-value" id="stat-speak-time">00:00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="app-container">
+            <!-- Columna Izquierda: Editor y Análisis -->
+            <div class="editor-column">
+                
+                <!-- Editor Principal -->
+                <section class="editor-section">
+                    <div class="toolbar top-toolbar">
+                        <div class="toolbar-group">
+                            <button id="btn-paste" title="Pegar">📋 Pegar</button>
+                            <button id="btn-clear" class="btn-danger" title="Limpiar">🗑️ Limpiar</button>
+                            <label for="file-upload" class="custom-file-upload">
+                                📁 Cargar .txt
+                            </label>
+                            <input id="file-upload" type="file" accept=".txt"/>
+                        </div>
+                        <div class="toolbar-group">
+                            <button id="btn-copy" title="Copiar">✂️ Copiar</button>
+                            <button id="btn-download" title="Descargar">⬇️ Descargar .txt</button>
+                            <button id="btn-fullscreen" title="Pantalla Completa">⛶</button>
+                        </div>
+                    </div>
+
+                    <div class="textarea-wrapper" id="drop-zone">
+                        <textarea id="main-editor" placeholder="Escribe o pega tu texto aquí..."></textarea>
+                        <div class="live-counter" id="live-char-counter">0</div>
+                    </div>
+
+                    <div class="toolbar bottom-toolbar">
+                        <div class="limits-control">
+                            <label>Palabras: <span id="toolbar-words">0</span> | Chars: <span id="toolbar-chars">0</span> | Límite:</label>
+                            <select id="limit-type">
+                                <option value="none">Ninguno</option>
+                                <option value="words">Palabras</option>
+                                <option value="chars">Caracteres</option>
+                            </select>
+                            <input type="number" id="limit-value" placeholder="Valor" min="1" class="hidden">
+                        </div>
+                        <div class="progress-bar-container hidden" id="limit-progress-container">
+                            <div class="progress-bar" id="limit-progress-bar"></div>
+                            <span class="progress-text" id="limit-progress-text">0%</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Análisis Profundo -->
+                <section class="deep-analysis" id="analisis">
+                    <h2>Análisis de Texto Profundo</h2>
+                    
+                    <div class="analysis-grid">
+                        <!-- Top Palabras -->
+                        <div class="analysis-card">
+                            <h3>Top Palabras Frecuentes</h3>
+                            <div class="toggle-group">
+                                <label class="switch">
+                                    <input type="checkbox" id="toggle-stopwords" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                                <span>Ignorar palabras comunes</span>
+                            </div>
+                            <div class="top-words-actions" style="margin-bottom: 1rem; display: flex; gap: 0.5rem;">
+                                <button id="copy-top-json" title="Copiar como JSON">JSON</button>
+                                <button id="copy-top-csv" title="Copiar como CSV">CSV</button>
+                            </div>
+                            <div class="word-freq-list" id="word-freq-list">
+                                <!-- Generado dinámicamente -->
+                            </div>
+                        </div>
+
+                        <!-- Legibilidad y Complejidad -->
+                        <div class="analysis-card">
+                            <h3>Legibilidad y Complejidad</h3>
+                            <ul class="readability-stats">
+                                <li>Índice Flesch-Kincaid: <strong id="read-flesch">0</strong> <span id="read-badge" class="badge">N/A</span></li>
+                                <li>Longitud media palabra: <strong id="avg-word-len">0</strong> chars</li>
+                                <li>Longitud media oración: <strong id="avg-sentence-len">0</strong> pal.</li>
+                                <li>Longitud media párrafo: <strong id="avg-paragraph-len">0</strong> orac.</li>
+                                <li>Nivel estimado: <strong id="read-level">N/A</strong></li>
+                            </ul>
+                            
+                            <h4 class="mt-4">Densidad de Palabra Clave</h4>
+                            <div class="seo-density">
+                                <input type="text" id="seo-keyword" placeholder="Palabra clave...">
+                                <div class="seo-results">
+                                    <span>Apariciones: <strong id="seo-count">0</strong></span>
+                                    <span>Densidad: <strong id="seo-density-val">0%</strong></span>
+                                    <span>1ª Aparición: <strong id="seo-first-pos">-</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Longitud de Palabras Chart -->
+                        <div class="analysis-card full-width">
+                            <h3>Distribución por Longitud</h3>
+                            <div class="chart-container" id="length-chart-container">
+                                <!-- SVG Generado dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Herramientas Especiales (Tabs) -->
+                <section class="special-tools" id="herramientas">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-target="tab-limits">Presets</button>
+                        <button class="tab-btn" data-target="tab-compare">Comparador</button>
+                        <button class="tab-btn" data-target="tab-lorem">Lorem Ipsum</button>
+                        <button class="tab-btn" data-target="tab-converter">Convertidor</button>
+                        <button class="tab-btn" data-target="tab-export">Exportar</button>
+                    </div>
+
+                    <div class="tab-content active" id="tab-limits">
+                        <div class="presets-grid">
+                            <button class="preset-btn" data-type="chars" data-val="280">🐦 Twitter (280c)</button>
+                            <button class="preset-btn" data-type="chars" data-val="2200">📸 Instagram (2200c)</button>
+                            <button class="preset-btn" data-type="chars" data-val="160">🔍 Meta Desc (160c)</button>
+                            <button class="preset-btn" data-type="chars" data-val="3000">💼 LinkedIn (3000c)</button>
+                            <button class="preset-btn" data-type="chars" data-val="80">🎵 TikTok Bio (80c)</button>
+                            <button class="preset-btn" data-type="chars" data-val="100">▶️ YT Title (100c)</button>
+                            <button class="preset-btn" data-type="chars" data-val="5000">▶️ YT Desc (5000c)</button>
+                            <button class="preset-btn" data-type="chars" data-val="160">✉️ SMS (160c)</button>
+                            <button class="preset-btn" data-type="chars" data-val="60">✉️ Email Subj (60c)</button>
+                            <button class="preset-btn" data-type="chars" data-val="65536">💬 WhatsApp (65k)</button>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab-compare">
+                        <div class="compare-container">
+                            <textarea id="compare-a" placeholder="Texto Original..."></textarea>
+                            <textarea id="compare-b" placeholder="Texto Modificado..."></textarea>
+                        </div>
+                        <div class="compare-results" id="compare-results">
+                            Diferencia: 0 palabras
+                        </div>
+                        <div class="compare-missing" id="compare-missing" style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; text-align: center;">
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab-lorem">
+                        <div class="lorem-controls">
+                            <input type="number" id="lorem-count" value="5" min="1" max="100">
+                            <select id="lorem-type">
+                                <option value="paragraphs">Párrafos</option>
+                                <option value="sentences">Oraciones</option>
+                                <option value="words">Palabras</option>
+                            </select>
+                            <select id="lorem-lang">
+                                <option value="classic">Clásico (Latín)</option>
+                                <option value="es">Español (Quijote)</option>
+                                <option value="nums">Solo Números</option>
+                            </select>
+                            <button id="btn-generate-lorem" class="btn-primary">Generar</button>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab-converter">
+                        <div class="converter-grid">
+                            <div style="grid-column: 1/-1; display:flex; gap:0.5rem; align-items:center;">
+                                <input type="text" id="char-search-input" placeholder="Contar carácter específico..." style="flex:1;">
+                                <button id="btn-char-search" class="btn-primary">Contar</button>
+                                <span id="char-search-result" style="margin-left: 0.5rem;">0</span>
+                            </div>
+                            <button class="conv-btn" id="conv-upper">MAYÚSCULAS</button>
+                            <button class="conv-btn" id="conv-lower">minúsculas</button>
+                            <button class="conv-btn" id="conv-title">Tipo Título</button>
+                            <button class="conv-btn" id="conv-sentence">Tipo oración.</button>
+                            <button class="conv-btn" id="conv-rm-dupes">Quitar Líneas Duplicadas</button>
+                            <button class="conv-btn" id="conv-rm-empty">Quitar Líneas Vacías</button>
+                            <button class="conv-btn" id="conv-rm-spaces">Quitar Espacios Extras</button>
+                            <button class="conv-btn" id="conv-reverse">Invertir Texto</button>
+                            <button class="conv-btn" id="conv-alternate">aLtErNaDo</button>
+                            <button class="conv-btn" id="conv-encode-url">Codificar URL</button>
+                            <button class="conv-btn" id="conv-encode-html">Codificar HTML</button>
+                            <button class="conv-btn" id="conv-extract-emails">Extraer Emails</button>
+                            <button class="conv-btn" id="conv-extract-urls">Extraer URLs</button>
+                            <button class="conv-btn" id="conv-extract-nums">Extraer Números</button>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab-export">
+                        <div class="converter-grid">
+                            <button class="conv-btn" id="exp-pdf">📄 Generar PDF</button>
+                            <button class="conv-btn" id="exp-csv">📊 Descargar CSV</button>
+                            <button class="conv-btn" id="exp-json">💻 Descargar JSON</button>
+                            <button class="conv-btn" id="exp-md">📝 Copiar Stats (MD)</button>
+                            <button class="conv-btn" id="exp-share">🔗 Compartir Stats</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SEO Content -->
+                <section class="seo-content">
+                    <article>
+                        <h2>¿Cómo usar el contador de palabras?</h2>
+                        <div class="steps-grid">
+                            <div class="step-card">
+                                <div class="step-num">1</div>
+                                <p><strong>Pega o escribe</strong> tu texto directamente en el área principal.</p>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-num">2</div>
+                                <p><strong>Observa</strong> los resultados en tiempo real en la parte superior.</p>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-num">3</div>
+                                <p><strong>Analiza</strong> la densidad de palabras, legibilidad y SEO más abajo.</p>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-num">4</div>
+                                <p><strong>Exporta</strong> o copia tus resultados en un clic.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="casos-uso" class="fade-in-section">
+                        <h2>¿Para qué sirve contar palabras?</h2>
+                        <div class="steps-grid">
+                            <div class="step-card">
+                                <h3>✍️ Escritores</h3>
+                                <p>Alcanzar metas de escritura (NaNoWriMo) o límites para revistas y editoriales.</p>
+                            </div>
+                            <div class="step-card">
+                                <h3>🔍 Profesionales SEO</h3>
+                                <p>Asegurar la longitud ideal de artículos y densidad de palabras clave para Google.</p>
+                            </div>
+                            <div class="step-card">
+                                <h3>🎓 Estudiantes</h3>
+                                <p>Cumplir con la longitud requerida en ensayos, TFG, TFM y reportes académicos.</p>
+                            </div>
+                            <div class="step-card">
+                                <h3>📱 Community Managers</h3>
+                                <p>Optimizar descripciones, tweets y biografías a los límites de cada plataforma.</p>
+                            </div>
+                            <div class="step-card">
+                                <h3>📰 Periodistas</h3>
+                                <p>Adaptar las noticias y columnas al espacio asignado en medios impresos o digitales.</p>
+                            </div>
+                            <div class="step-card">
+                                <h3>🤖 IA & Prompts</h3>
+                                <p>Ajustar textos y prompts para no exceder la ventana de contexto de ChatGPT/Claude.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="limites" class="fade-in-section">
+                        <h2>Límites de palabras y caracteres por plataforma</h2>
+                        <div class="table-responsive">
+                            <table class="limits-table">
+                                <thead>
+                                    <tr>
+                                        <th>Plataforma</th>
+                                        <th>Límite</th>
+                                        <th>Tipo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Twitter/X</td><td>280</td><td>Caracteres</td></tr>
+                                    <tr><td>Instagram</td><td>2200</td><td>Caracteres</td></tr>
+                                    <tr><td>Facebook Post</td><td>63206</td><td>Caracteres</td></tr>
+                                    <tr><td>LinkedIn Post</td><td>3000</td><td>Caracteres</td></tr>
+                                    <tr><td>TikTok Bio</td><td>80</td><td>Caracteres</td></tr>
+                                    <tr><td>YouTube Título</td><td>100</td><td>Caracteres</td></tr>
+                                    <tr><td>Google Ads Título</td><td>30</td><td>Caracteres</td></tr>
+                                    <tr><td>Meta Title SEO</td><td>60</td><td>Caracteres</td></tr>
+                                    <tr><td>Meta Desc SEO</td><td>160</td><td>Caracteres</td></tr>
+                                    <tr><td>Telegram Mensaje</td><td>4096</td><td>Caracteres</td></tr>
+                                    <tr><td>Threads</td><td>500</td><td>Caracteres</td></tr>
+                                    <tr><td>Reddit Título</td><td>300</td><td>Caracteres</td></tr>
+                                    <tr><td>WhatsApp</td><td>65536</td><td>Caracteres</td></tr>
+                                    <tr><td>SMS</td><td>160</td><td>Caracteres</td></tr>
+                                    <tr><td>ChatGPT Prompt</td><td>~4096</td><td>Tokens</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                    <article id="faq" class="fade-in-section">
+                        <h2>Preguntas Frecuentes</h2>
+                        <div class="accordion" id="faq-accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header">¿Cómo se cuentan las palabras exactamente?</button>
+                                <div class="accordion-content">
+                                    <p>Nuestro algoritmo detecta los espacios en blanco, saltos de línea y signos de puntuación para separar y contar las palabras con una precisión del 100%, adaptado a las reglas del idioma español.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">¿El contador funciona en español con tildes y ñ?</button>
+                                <div class="accordion-content">
+                                    <p>Sí, está totalmente optimizado para reconocer tildes, diéresis, la letra ñ y otros caracteres especiales del español.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">¿El texto que escribo se guarda?</button>
+                                <div class="accordion-content">
+                                    <p>No, todo el procesamiento se realiza localmente en tu navegador. Ningún texto se envía a nuestros servidores, garantizando total privacidad.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">¿Cuántas páginas tiene mi texto?</button>
+                                <div class="accordion-content">
+                                    <p>Por defecto calculamos 300 palabras por página (espacio estándar). Puedes cambiar esto en la configuración a 250 (doble espacio) o 500 (espacio simple).</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">¿Cuánto tiempo tardaré en leer o hablar el texto?</button>
+                                <div class="accordion-content">
+                                    <p>La velocidad promedio de lectura en silencio es de 250 palabras por minuto, y de habla es de 150 palabras por minuto. Hemos añadido controles deslizantes para que ajustes estas métricas a tu ritmo exacto.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">¿Cuál es la diferencia entre caracteres con y sin espacios?</button>
+                                <div class="accordion-content">
+                                    <p>Los "caracteres" cuentan absolutamente todas las letras, números, símbolos y espacios en blanco. Los "caracteres sin espacios" ignoran todos los espacios y saltos de línea, siendo útil para ciertos límites de software o bases de datos.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">¿Puedo contar palabras de un archivo PDF o Word?</button>
+                                <div class="accordion-content">
+                                    <p>Actualmente soportamos la carga directa de archivos de texto plano (.txt) arrastrando y soltando en el editor. Para PDFs o Word, te recomendamos seleccionar el texto, copiar (Ctrl+C) y pegarlo (Ctrl+V) directamente.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+
+            <!-- Columna Derecha: Sidebar & Ads -->
+            <aside class="sidebar-column">
+                <div class="settings-panel">
+                    <h3>⚙️ Configuración</h3>
+                    
+                    <div class="setting-group">
+                        <label for="set-language">Idioma:</label>
+                        <select id="set-language">
+                            <option value="es" selected>Español</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label>Visibilidad de Paneles:</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="toggle-analysis-sec" checked> Análisis Profundo</label>
+                            <label><input type="checkbox" id="toggle-tools-sec" checked> Herramientas Especiales</label>
+                            <label><input type="checkbox" id="toggle-seo-sec" checked> Contenido SEO</label>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="set-read-speed">Veloc. Lectura (WPM): <span id="val-read-speed">250</span></label>
+                        <input type="range" id="set-read-speed" min="100" max="400" value="250">
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label for="set-speak-speed">Veloc. Habla (WPM): <span id="val-speak-speed">150</span></label>
+                        <input type="range" id="set-speak-speed" min="80" max="200" value="150">
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="set-words-page">Palabras por Página:</label>
+                        <select id="set-words-page">
+                            <option value="250">250 (Doble espacio)</option>
+                            <option value="300" selected>300 (Estándar)</option>
+                            <option value="500">500 (Espacio simple)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Sticky Ad Slot -->
+                <div class="ad-slot ad-slot-sidebar sticky-ad" id="ad-slot-2">
+                    <span>Publicidad<br>(300x600)</span>
+                    <!-- Inserta el código de AdSense aquí -->
+                </div>
+            </aside>
+        </div>
+        
+        <!-- Bottom Ad Slot -->
+        <div class="ad-slot ad-slot-bottom" id="ad-slot-3">
+            <span>Publicidad<br>(Display Horizontal)</span>
+            <!-- Inserta el código de AdSense aquí -->
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy.html">Privacidad</a>
+                <a href="terms.html">Términos</a>
+                <a href="contact.html">Contacto</a>
+            </div>
+            <p>&copy; 2026 WordCount Pro. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+<script src="cookie-consent.js"></script>
+</body>
+</html>
